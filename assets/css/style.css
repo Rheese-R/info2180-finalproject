@@ -262,3 +262,53 @@ body {
         font-size: 14px;
     }
 }
+
+
+/* CONTACT DASHBOARD FILTERS */
+
+.contact-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    padding: 10px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-button:hover {
+    background-color: #f3f4f6;
+}
+
+.filter-button.active {
+    background-color: #2563a6;
+    border-color: #2563a6;
+    color: white;
+}
+
+#contacts-table-body a {
+    color: #2563a6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#contacts-table-body a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .contact-filters {
+        flex-direction: column;
+    }
+
+    .filter-button {
+        width: 100%;
+    }
+}
