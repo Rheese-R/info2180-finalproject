@@ -1,17 +1,13 @@
-
 <?php
 
-session_start();
+require_once __DIR__ . '/includes/auth.php';
 
-// Prevent users who are not logged in from accessing the dashboard.
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
+// Only logged-in users can access the dashboard.
+requireLogin();
 
-$firstname = htmlspecialchars($_SESSION['firstname']);
-$lastname = htmlspecialchars($_SESSION['lastname']);
-$role = htmlspecialchars($_SESSION['role']);
+$firstname = htmlspecialchars($_SESSION['firstname'] ?? '');
+$lastname = htmlspecialchars($_SESSION['lastname'] ?? '');
+$role = htmlspecialchars($_SESSION['role'] ?? '');
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +24,12 @@ $role = htmlspecialchars($_SESSION['role']);
 
         <nav>
             <span>Welcome, <?php echo $firstname . ' ' . $lastname; ?></span>
+
+            <?php if (($_SESSION['role'] ?? '') === 'Admin'): ?>
+                <a href="create-user.php">Create User</a>
+                <a href="users.php">Users</a>
+            <?php endif; ?>
+
             <a href="logout.php">Logout</a>
         </nav>
     </header>
