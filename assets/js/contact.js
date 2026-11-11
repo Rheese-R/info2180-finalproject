@@ -1,3 +1,4 @@
+
 const contactMessage = document.getElementById('contact-message');
 const contactDetails = document.getElementById('contact-details');
 const contactActionMessage = document.getElementById('contact-action-message');
@@ -86,8 +87,13 @@ async function loadContact() {
         contactMessage.textContent = '';
         contactDetails.hidden = false;
 
-        // Store the current contact type for the Change Type button.
+        // Remember the current type and show the next available action.
         changeTypeButton.dataset.currentType = contact.type;
+
+        changeTypeButton.textContent =
+            contact.type === 'Sales Lead'
+                ? 'Change to Support'
+                : 'Change to Sales Lead';
 
     } catch (error) {
         contactMessage.textContent =
@@ -127,6 +133,48 @@ assignContactButton.addEventListener('click', async function () {
             'Unable to connect to the server. Please try again.';
     } finally {
         assignContactButton.disabled = false;
+    }
+});
+
+// Switch the contact between Sales Lead and Support.
+changeTypeButton.addEventListener('click', async function () {
+    const currentType = changeTypeButton.dataset.currentType;
+
+    const newType = currentType === 'Sales Lead'
+        ? 'Support'
+        : 'Sales Lead';
+
+    changeTypeButton.disabled = true;
+    contactActionMessage.textContent = 'Updating contact type...';
+
+    const formData = new FormData();
+    formData.append('contact_id', contactId);
+    formData.append('type', newType);
+
+    try {
+        const response = await fetch('api/change-contact-type.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            contactActionMessage.textContent =
+                result.message || 'Unable to change contact type.';
+            return;
+        }
+
+        contactActionMessage.textContent = result.message;
+
+        // Reload the details without refreshing the page.
+        await loadContact();
+
+    } catch (error) {
+        contactActionMessage.textContent =
+            'Unable to connect to the server. Please try again.';
+    } finally {
+        changeTypeButton.disabled = false;
     }
 });
 
