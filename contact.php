@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/includes/auth.php';
@@ -129,6 +128,48 @@ if (!$contactId || $contactId < 1) {
                 </div>
 
                 <p id="contact-action-message" role="status"></p>
+
+                <section class="notes-section">
+
+                    <h3>Notes</h3>
+
+                    <p id="notes-message" role="status">
+                        Loading notes...
+                    </p>
+
+                    <div id="notes-list"></div>
+
+                    <div class="add-note-section">
+
+                        <h4>Add a Note</h4>
+
+                        <form id="note-form">
+
+                            <div class="form-group">
+                                <label for="note-comment">
+                                    Comment
+                                </label>
+
+                                <textarea
+                                    id="note-comment"
+                                    name="comment"
+                                    rows="4"
+                                    placeholder="Enter your note here..."
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" id="add-note-button">
+                                Add Note
+                            </button>
+
+                        </form>
+
+                        <p id="note-action-message" role="status"></p>
+
+                    </div>
+
+                </section>
 
             </div>
 

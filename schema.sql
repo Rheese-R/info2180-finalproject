@@ -1,4 +1,3 @@
-
 -- ============================================
 -- INFO2180 Project 2
 -- Dolphin CRM Database Schema

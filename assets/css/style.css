@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
 }
@@ -311,4 +310,65 @@ body {
     .filter-button {
         width: 100%;
     }
+}
+
+
+/* Contact Notes Section */
+.notes-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+}
+
+.notes-section h3 {
+    margin-bottom: 20px;
+}
+
+.note-card {
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+}
+
+.note-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.note-date {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.note-comment {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.add-note-section {
+    margin-top: 25px;
+}
+
+.add-note-section h4 {
+    margin-bottom: 15px;
+}
+
+#note-comment {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+#add-note-button {
+    margin-top: 10px;
 }

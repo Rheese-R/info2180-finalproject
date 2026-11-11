@@ -1,4 +1,3 @@
-
 const contactsTableBody = document.getElementById('contacts-table-body');
 const contactsMessage = document.getElementById('contacts-message');
 const filterButtons = document.querySelectorAll('.filter-button');
